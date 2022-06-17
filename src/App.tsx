@@ -4,13 +4,12 @@ import FramerVariants from "./components/FramerVariants";
 import FramerGestures from "./components/FramerGestures";
 import FramerDrag from "./components/FramerDrag";
 import {
-  AnimatePresence,
   motion,
   useMotionValue,
   useTransform,
   useViewportScroll,
 } from "framer-motion";
-import { useState } from "react";
+import FramerAnimatePresence from "./components/FramerAnimatePresence";
 
 const Wrapper = styled(motion.div)`
   height: 150vh;
@@ -62,24 +61,7 @@ function App() {
   );
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 2, 1]);
-  const [showing, setShowing] = useState(false);
-  const toggleShowing = () => setShowing((prev) => !prev);
-  const boxVariants = {
-    initial: {
-      opacity: 0,
-      scale: 0,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotateZ: 360,
-    },
-    leaving: {
-      opacity: 0,
-      scale: 0,
-      y: 50,
-    },
-  };
+
   return (
     <Wrapper style={{ background: gradient }}>
       <Svg
@@ -109,19 +91,7 @@ function App() {
         drag="x"
         dragSnapToOrigin
       />
-      <div>
-        <button onClick={toggleShowing}>Click</button>
-        <AnimatePresence>
-          {showing ? (
-            <Box
-              variants={boxVariants}
-              initial="initial"
-              animate="visible"
-              exit="leaving"
-            />
-          ) : null}
-        </AnimatePresence>
-      </div>
+      <FramerAnimatePresence />
     </Wrapper>
   );
 }
