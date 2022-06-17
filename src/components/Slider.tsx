@@ -8,11 +8,12 @@ const Box = styled(motion.div)`
   background-color: white;
   border-radius: 40px;
   position: absolute;
-  display: flex;
+  display: grid;
   justify-content: center;
   font-size: 40px;
   align-items: center;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+  clear: both;
 `;
 
 const box = {
@@ -59,8 +60,6 @@ function Slider() {
   };
   return (
     <div>
-      <button onClick={prevPlease}>prev</button>
-      <button onClick={nextPlease}>next</button>
       <AnimatePresence exitBeforeEnter custom={isBack}>
         <Box
           custom={isBack}
@@ -73,6 +72,12 @@ function Slider() {
           {visible}
         </Box>
       </AnimatePresence>
+      <button style={{ position: "relative" }} onClick={prevPlease}>
+        prev
+      </button>
+      <button style={{ position: "relative" }} onClick={nextPlease}>
+        next
+      </button>
     </div>
   );
 }

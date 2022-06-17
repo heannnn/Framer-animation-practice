@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import FramerAnimatePresence from "./components/FramerAnimatePresence";
 import Slider from "./components/Slider";
+import Layout from "./components/Layout";
 
 const Wrapper = styled(motion.div)`
   height: 150vh;
@@ -18,7 +19,7 @@ const Wrapper = styled(motion.div)`
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: 500px;
   background: linear-gradient() 135deg, rgb(238, 0, 153), rgb(221, 0, 238);
 `;
@@ -94,9 +95,8 @@ function App() {
           dragSnapToOrigin
         />
         <FramerAnimatePresence />
-      </Wrapper>
-      <Wrapper>
         <Slider />
+        <Layout />
       </Wrapper>
     </div>
   );
